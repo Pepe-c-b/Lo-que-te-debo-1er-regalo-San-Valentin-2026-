@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #ffebf8 0%, #ffdad4 100%);
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+}
+
+.card {
+    background: white;
+    width: 320px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.rope-system {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: grab;
+    z-index: 10;
+    transform-origin: top center;
+    transform: translateX(-50%);
+}
+
+.rope-system:active {
+    cursor: grabbing;
+}
+
+.rope {
+    width: 4px;
+    height: 150px;
+    background:
+        linear-gradient(135deg, #ff4d6d 25%, transparent 25%) -2px 0,
+        linear-gradient(225deg, #ff4d6d 25%, transparent 25%) -2px 0,
+        linear-gradient(315deg, #ff4d6d 25%, transparent 25%),
+        linear-gradient(45deg, #ff4d6d 25%, transparent 25%);
+    background-size: 8px 8px;
+    background-color: transparent;
+    transform-origin: top center;
+}
+
+.handle {
+    width: 40px;
+    height: 60px;
+    background-color: #ff4d6d;
+    border-radius: 4px 4px 10px 10px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.handle::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+}
+
+.bg-hearts {
+    position: absolute;
+    bottom: 100px;
+    font-size: 40px;
+    color: #ff4d6d;
+    opacity: 0.8;
+    transition: transform 0.2s;
+}
+
+.secret-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    text-align: center;
+    color: #ff4d6d;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 80%;
+    z-index: 1;
+}
+
+.secret-message.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.instruction {
+    margin-top: 30px;
+    color: #555;
+    font-size: 16px;
+    text-align: center;
+}
+
+.proposal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 20;
+    text-align: center;
+}
+
+.proposal-container.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.proposal-gif, .proposal-gif-extra {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.proposal-text {
+    color: #ff4d6d;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-yes { background-color: #ff4d6d; }
+.btn-no { background-color: #000; position: relative; }
+
+.rebound {
+    transition: height 0.6s cubic-bezier(0.5, 1.5, 0.5, 1), transform 0.6s cubic-bezier(0.5, 1.5, 0.5, 1);
+}
